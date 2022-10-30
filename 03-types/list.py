@@ -56,11 +56,11 @@ print(f'\tVypíše každý druhý prvek ze seznamu letters: {letters[::2]}')
 # ??? 1. cvičení ???
 # Doplňte podle zadání chybějící u následujících tří výpisů
 print('\n1. Cvičení\n***********************************************************************************************')
-print(f'\tVypíše poslední 2 prvky ze seznamu numbers: ???')
-print(f'\tVypíše každý sudý prvek ze seznamu letters: ???')
-print(f'\tVypíše všechny hodnoty z mixed_list kromě dvou posledních: ???')
-print(f'\tVypíše hodnotu prvku name ze slovníku umístěného v seznamu mixed_list: ???')
-print(f'\tVypíše hodnotu předposledního čísla z listu numbers umístěného v seznamu mixed_list: ???')
+print(f'\tVypíše poslední 2 prvky ze seznamu numbers: {numbers[-2:]}')
+print(f'\tVypíše každý sudý prvek ze seznamu letters: {letters[1::2]}')
+print(f'\tVypíše všechny hodnoty z mixed_list kromě dvou posledních: {mixed_list[:-2]}')
+print(f'\tVypíše hodnotu prvku name ze slovníku umístěného v seznamu mixed_list: {mixed_list[4]["name"]}')
+print(f'\tVypíše hodnotu předposledního čísla z listu numbers umístěného v seznamu mixed_list: {mixed_list[3][1][-2]}')
 print('***********************************************************************************************\n')
 # ??? Konec 1. cvičení ???
 
@@ -282,9 +282,27 @@ print(f'\tSbalení seznamů do proměnné values: {values}\n')
 # aby vznikl seznam n-tic (list of tuples) v podobě (cislo, znak).
 # Snažte se vždy o co nejzhuštěnější kód - ideálně na 1 řádku (+ další řádek s kontrolním výpisem proměnné)
 # import knihovny pro generování náhodných čísel
-from random import randint
+
 
 print(f'\n*************************************\nCvičení 2\n*************************************')
+
+hundreds = [i for i in range(1, 2000) if i % 200 == 0]
+print(hundreds)
+
+import string
+import random
+
+ascii = [random.choice(string.ascii_uppercase) for i in range(50)]
+print(ascii)
+
+hundreds = [i for i in hundreds[3:-3]]
+print(hundreds)
+
+unique = [chr for chr in ascii if ascii.count(chr) == 1]
+print(unique)
+
+combine = list(zip(hundreds, ascii))
+print(combine)
 
 
 
@@ -298,3 +316,14 @@ print(f'\n*************************************\nCvičení 2\n******************
 # Záznamy budou seřazeny podle věku (sestupně).
 
 print(f'\n*************************************\nCvičení 3\n*************************************')
+persons.extend([("Lucian", 20, "muž"), ("Eva", 50, "žena"), ("Radek", 40, "muž"), ("Iva", 30, "žena")])
+print(persons)
+
+women = [i[0] for i in persons if (i[2] == "žena")]
+women2 = list(filter(lambda item: item[2] == "žena",persons))
+print(*[i+f"\n{'-'*len(i)}\n" for i in women])
+
+ipeople = [i for i in persons if ("i" in i[0])]
+ipeople2 = list(filter(lambda item: "i" in item[0], persons))
+
+print(*[f"{index+1};{item[0]};{item[1]};{item[2]}\n" for index, item in enumerate(ipeople)])

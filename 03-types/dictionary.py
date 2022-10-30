@@ -7,6 +7,8 @@ Každému klíči je přiřazena jedna hodnota.
 
 # Collection which is unordered, changeable and indexed.
 # In Python dictionaries are written with curly brackets, and they have keys and values.
+# Kolekce, která je neuspořádaná, měnitelná a indexovaná.
+# V Pythonu jsou slovníky psány se složenými závorkami a mají klíče a hodnoty
 car = {
   'brand': 'Ford',
   'model': 'Mustang',
